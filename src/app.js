@@ -10,5 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       newTask: ""
     },
+    methods: {
+      addNewTask: function(){
+        this.tasks.push({
+          taskname: this.newTask,
+          status: false
+        });
+        this.newTask = "";
+      }
+    }
   });
 });

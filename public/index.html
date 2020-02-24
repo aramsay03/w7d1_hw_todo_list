@@ -19,7 +19,7 @@
       </div>
       <div class="displayed_tasks">
         <ul>
-          <li v-for="task in tasks">
+          <li v-for="(task, index) in tasks">
             <span>{{ task.taskname }}</span>
             <span v-if="task.status">Completed</span>
             <input type="checkbox" v-model="task.status">
