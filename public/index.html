@@ -2,20 +2,22 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Empty your mind here!</title>
+    <title>ToDo List</title>
     <link rel="stylesheet" href="./css/main.css">
     <script src="./js/bundle.js"></script>
   </head>
   <body>
-    <h1>Get your life in chack and use this todo list</h1>
-
-    <div id="todo-app">
+    <div class="main" id="todo-app">
+      <div class="header">
+        <h1>Empty your mind here!!</h1>
+      </div>
       <div class="new_task_entry">
         <form @submit.prevent="addNewTask">
           <label for="new-task">Add a new task:</label>
-          <input type="text" id="new-task" v-model="newTask">
-          <label for="priority">Priority Low:</label>
-          <input type="radio" v-model="priority" value="low">
+          <input type="text" id="new-task" v-model="newTask" required>
+          <br>
+          <label for="priority">Priority medium:</label>
+          <input type="radio" v-model="priority" value="medium">
           <label for="priority">Priority High:</label>
           <input type="radio" v-model="priority" value="high">
           <input type="submit" value="Add Task">
@@ -23,10 +25,10 @@
       </div>
       <div class="displayed_tasks">
         <ul>
-          <li v-for="(task, index) in tasks">
+          <li v-for="(task, index) in tasks" :class="task.priority">
             <span>{{ task.taskname }}</span>
-            <span v-if="task.status">Completed</span>
-            <input type="checkbox" v-model="task.status">
+            <span v-if="task.isComplete">Completed</span>
+            <input type="checkbox" v-model="task.isComplete" @click="taskChecked(index)">
             <span>{{ task.priority }}</span>
           </li>
         </ul>
