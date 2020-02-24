@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Empty your mind here!</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="./js/bundle.js"></script>
+  </head>
+  <body>
+    <h1>Get your life in chack and use this todo list</h1>
+
+    <div id="todo-app">
+      <div class="new_task_entry">
+        <form @submit.prevent="addNewTask">
+          <label for="new-task">Add a new task:</label>
+          <input type="text"id="new-task" v-model="newTask">
+          <input type="submit" value="Add Task">
+        </form>
+      </div>
+      <div class="displayed_tasks">
+        <ul>
+          <li v-for="task in tasks">
+            <span>{{ task.taskname }}</span>
+            <span v-if="task.status">Completed</span>
+            <input type="checkbox" v-model="task.status">
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </body>
+</html>
