@@ -5,18 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
     el: "#todo-app",
     data: {
       tasks: [
-          {taskname: "Write the dam code", status: false},
-          {taskname: "Pull hair out", status: true}
+          {taskname: "Write the dam code", status: false, priority: "high"},
+          {taskname: "Pull hair out", status: true, priority: "low"}
       ],
-      newTask: ""
+      newTask: "",
+      priority: ""
     },
     methods: {
       addNewTask: function(){
         this.tasks.push({
           taskname: this.newTask,
-          status: false
+          status: false,
+          priority: this.priority
         });
         this.newTask = "";
+        this.priority = "";
       }
     }
   });
